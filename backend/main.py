@@ -16,13 +16,15 @@ c.execute('''CREATE TABLE IF NOT EXISTS users
 c.close()
 conn.close()
 app = Flask(__name__)
-
-def get_user_from_db(username):
+def get_one_result(data, table, column, value):
     c,conn = opendb()
-    c.execute("select * from users where username = ?",(username,))
+    c.execute(f"select {data} from {table} where {column} = ? limit 1",(value,))
     row = c.fetchone()
     c.close()
     conn.close()
+    return row
+def get_user_from_db(username):
+    row = get_one_result("*","users","username",username)
     print(row)
     if row == None:
         return False
@@ -36,11 +38,7 @@ def setphash(username,phash):
     c.close()
     conn.close()
 def login_user(username,password):
-    c,conn = opendb()
-    c.execute("select password from users where username = ?",(username,))
-    row = c.fetchone()
-    c.close()
-    conn.close()
+    row = get_one_result("password","users","username",username)
     print(row)
     if row == None:
         return False

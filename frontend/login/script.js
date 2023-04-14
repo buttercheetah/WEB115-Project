@@ -3,16 +3,21 @@ const message = document.querySelector('#message');
 
 
 async function login_success() {
-    //console.log('Success login function!');
+    console.log('Success login function!');
     message.textContent = 'Login Successfull!';
     await sleep(400);
     location.href = '/main';
 }
 
-
-if (checkCookieLogin()) {
-    login_success();
+async function checklogin() {
+    const result = await checkCookieLogin();
+    if (result == false) {
+        return false;
+    } else {
+        login_success();
+    }
 }
+checklogin();
 
 form.addEventListener('submit', async (event) => {
 event.preventDefault();
