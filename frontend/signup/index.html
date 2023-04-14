@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Sign Up Page</title>
+  </head>
+  <body>
+    <h1>Sign Up</h1>
+    <form id="signup-form">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required><br>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required><br>
+      <button type="submit">Sign Up</button>
+    </form>
+
+    <div id="message"></div>
+
+    <script>
+      const sleep = ms => new Promise(r => setTimeout(r, ms));
+      const form = document.querySelector('#signup-form');
+      const message = document.querySelector('#message');
+
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const username = form.username.value;
+        const password = form.password.value;
+
+        const response = await fetch('/api/signup', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({username, password})
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          message.textContent = 'Account created successfully';
+          await sleep(400);
+          location.href = '/login';
+        } else {
+          message.textContent = result.message;
+        }
+      });
+    </script>
+  </body>
+</html>
