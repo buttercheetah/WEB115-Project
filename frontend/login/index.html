@@ -16,67 +16,8 @@
 
     <div id="message"></div>
 
-    <script>
-      const form = document.querySelector('#login-form');
-      const message = document.querySelector('#message');
-      const sleep = ms => new Promise(r => setTimeout(r, ms));
-
-      async function login_success() {
-        console.log('Success login function!');
-        message.textContent = 'Login Successfull!';
-        await sleep(400);
-        location.href = '/main';
-      }
-
-      function getCookie(name) {
-        const value = `; ${document.cookie}`;
-        const parts = value.split(`; ${name}=`);
-        if (parts.length === 2) return parts.pop().split(';').shift();
-      }
-      async function checkCookie() {
-        let cuser = getCookie("username");
-        let cphash = getCookie("phash");
-        if (cuser != "" && cphash != undefined) {
-          const response = await fetch('/api/login', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({"username":cuser, "password":cphash})
-          });
-          const result = await response.json();
-          console.log(result);
-          if (result.success) { 
-            console.log('Success login!');
-            login_success(); 
-          }
-        }
-      }
-      checkCookie();
-
-      form.addEventListener('submit', async (event) => {
-        event.preventDefault();
-
-        const username = form.username.value;
-        const password = form.password.value;
-
-        const response = await fetch('/api/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({username, password})
-        });
-
-        const result = await response.json();
-
-        if (result.success) {
-          document.cookie = "username="+username;
-          document.cookie = "phash="+result.phash;
-        } else {
-          message.textContent = 'Invalid username or password';
-        }
-      });
-    </script>
+    <script type="text/javascript" src="/general.js"></script>
+    <script type="text/javascript" src="/cookie.js"></script>
+    <script type="text/javascript" src="script.js"></script>
   </body>
 </html>

@@ -16,35 +16,8 @@
 
     <div id="message"></div>
 
-    <script>
-      const sleep = ms => new Promise(r => setTimeout(r, ms));
-      const form = document.querySelector('#signup-form');
-      const message = document.querySelector('#message');
-
-      form.addEventListener('submit', async (event) => {
-        event.preventDefault();
-
-        const username = form.username.value;
-        const password = form.password.value;
-
-        const response = await fetch('/api/signup', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({username, password})
-        });
-
-        const result = await response.json();
-
-        if (result.success) {
-          message.textContent = 'Account created successfully';
-          await sleep(400);
-          location.href = '/login';
-        } else {
-          message.textContent = result.message;
-        }
-      });
-    </script>
+    <script type="text/javascript" src="/general.js"></script>
+    <script type="text/javascript" src="/cookie.js"></script>
+    <script type="text/javascript" src="script.js"></script>
   </body>
 </html>
