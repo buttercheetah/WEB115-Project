@@ -2,7 +2,7 @@ const form = document.querySelector('#signup-form');
 const message = document.querySelector('#message');
 
 async function login_success() {
-    console.log('Success login function!');
+    //console.log('Success login function!');
     message.textContent = 'Already Logged in!';
     await sleep(400);
     location.href = '/main';

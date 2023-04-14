@@ -3,7 +3,7 @@ const message = document.querySelector('#message');
 
 
 async function login_success() {
-    console.log('Success login function!');
+    //console.log('Success login function!');
     message.textContent = 'Login Successfull!';
     await sleep(400);
     location.href = '/main';

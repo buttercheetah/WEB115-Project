@@ -1,0 +1,38 @@
+.banner {
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.banner ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.banner ul li {
+    margin-right: 2px;
+}
+
+.banner ul li:last-child {
+    margin-right: 0;
+}
+
+.banner ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 1px;
+    transition: background-color 0.3s ease;
+}
+
+.banner ul li a:hover {
+    background-color: #3E8E41;
+}
