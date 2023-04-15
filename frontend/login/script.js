@@ -36,8 +36,9 @@ const response = await fetch('/api/login', {
 const result = await response.json();
 
 if (result.success) {
-    document.cookie = "username="+username;
-    document.cookie = "phash="+result.phash;
+    document.cookie = "username="+username+"; path=/";
+    document.cookie = "phash="+result.phash+"; path=/";
+    login_success();
 } else {
     message.textContent = 'Invalid username or password';
 }

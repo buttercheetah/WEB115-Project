@@ -55,7 +55,7 @@ def check_hash(username,hash):
     row = c.fetchone()
     c.close()
     conn.close()
-    print(row[0])
+    print(row)
     print(hash)
     if row[0] == hash:
         return True
