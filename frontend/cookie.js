@@ -1,3 +1,7 @@
+function deletecookie(cookie) {
+    console.log('Deleting cookie ' + cookie);
+    document.cookie = cookie+'=; Max-Age=-99999999; path=/';
+}
 function getCookie(name) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
@@ -22,6 +26,9 @@ async function checkCookieLogin() {
         if (result.success) { 
             //console.log('Success login!');
             return true; 
+        } else {
+            deletecookie("username");
+            deletecookie("phash");
         }
     }
     return false;
