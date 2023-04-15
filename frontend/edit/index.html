@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Input Box Example</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="input-box">
+      <div class="grid-container">
+        <div id="Education" class="categories">
+          <h1>Education</h1>
+          <form onsubmit="addToList(1); return false;">
+            <input type="text" placeholder="Enter text" id="input1" />
+            <button type="button" onclick="addToList(1)">Add</button>
+          </form>
+          <ul id="list1"></ul>
+        </div>
+
+
+        <div id="Skills" class="categories">
+          <h1>Skills</h1>
+          <form onsubmit="addToList(2); return false;">
+            <input type="text" placeholder="Enter text" id="input2" />
+            <button type="button" onclick="addToList(2)">Add</button>
+          </form>
+          <ul id="list2"></ul>
+        </div>
+
+        <div id="Technical Skills" class="categories">
+          <h1>Technical Skills</h1>
+          <form onsubmit="addToList(3); return false;">
+            <input type="text" placeholder="Enter text" id="input3" />
+            <button type="button" onclick="addToList(3)">Add</button>
+          </form>
+          <ul id="list3"></ul>
+        </div>
+
+        <div id="Languages" class="categories">
+          <h1>Languages</h1>
+          <form onsubmit="addToList(4); return false;">
+            <input type="text" placeholder="Enter text" id="input4" />
+            <button type="button" onclick="addToList(4)">Add</button>
+          </form>
+          <ul id="list4"></ul>
+        </div>
+
+        <div id="Interests" class="categories">
+          <h1>Interests</h1>
+          <form onsubmit="addToList(5); return false;">
+            <input type="text" placeholder="Enter text" id="input5" />
+            <button type="button" onclick="addToList(5)">Add</button>
+          </form>
+          <ul id="list5"></ul>
+        </div>
+      </div>
+    </div>
+
+	<script type="text/javascript" src="/general.js"></script>
+    <script type="text/javascript" src="/cookie.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
