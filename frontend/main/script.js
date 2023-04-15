@@ -13,6 +13,6 @@ async function checklogin() {
 
 async function main() {
     const result = await checklogin();
-    if (result == false) { return}
+    if (result == false) {return}
     
 }
