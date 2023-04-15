@@ -9,9 +9,15 @@ async function login_success() {
 }
 
 
-if (checkCookieLogin()) {
-    login_success();
+async function main() {
+    const result = await checkCookieLogin();
+    if (result) {
+        console.log('Success');
+        login_success();
+    }
 }
+
+main();
 
 form.addEventListener('submit', async (event) => {
 event.preventDefault();

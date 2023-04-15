@@ -11,7 +11,7 @@ def opendb():
     return c, conn
 c,conn = opendb()
 c.execute('''CREATE TABLE IF NOT EXISTS users
-            (username TEXT PRIMARY KEY, password TEXT, currentphash TEXT)''')
+            (userid INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, password TEXT, currentphash TEXT)''')
 # close the cursor and the connection
 c.close()
 conn.close()
@@ -50,11 +50,15 @@ def login_user(username,password):
         else:
             return False
 def check_hash(username,hash):
-    c,conn = opendb()
-    c.execute("select currentphash from users where username = ?",(username,))
-    row = c.fetchone()
-    c.close()
-    conn.close()
+    row = get_one_result("currentphash","users","username",username)
+    print(row)
+    print(hash)
+    if row[0] == hash:
+        return True
+    else:
+        return False
+def get_userid(username,hash):
+    row = get_one_result("currentphash,userid","users","username",username)
     print(row)
     print(hash)
     if row[0] == hash:
