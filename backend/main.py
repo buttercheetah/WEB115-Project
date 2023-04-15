@@ -3,6 +3,8 @@ import time
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 import sqlite3
+import os
+import json
 
 # create a connection to the SQLite database
 def opendb():
@@ -59,10 +61,10 @@ def check_hash(username,hash):
         return False
 def get_userid(username,hash):
     row = get_one_result("currentphash,userid","users","username",username)
-    print(row)
+    print(row[0])
     print(hash)
     if row[0] == hash:
-        return True
+        return row[1]
     else:
         return False
 def create_user_in_db(username,password):
@@ -106,5 +108,45 @@ def signup():
         return jsonify({'success': True})
     else:
         return jsonify({'success': False, 'message': 'Internal error'})
+
+@app.route('/api/getuserdata', methods=['POST'])
+def getuserdata():
+    username = request.json['username']
+    uhash = request.json['uhash']
+
+    if "pbkdf2:sha256" not in uhash:
+        return jsonify({'success': False, 'message': 'Password not a hash'})
+    if not check_hash(username,uhash):
+        return jsonify({'success': False, 'message': 'Hash does not match'})
+
+    userid = get_userid(username,uhash)
+    if not userid:
+        return jsonify({'success': False, 'message': 'Hash does not match'})
+
+    userdatapath = f"instance/userdata/{userid}.json"
+    if os.path.isfile(userdatapath):
+        f = open(userdatapath)
+        userdata = json.load(f)
+        f.close()
+        return jsonify({'success': True, 'data': userdata})
+    else:
+        return jsonify({'success': False, 'message': 'User data does not exist'})
+
+@app.route('/api/dev/getuserid', methods=['POST'])
+def devgetuserid():
+    username = request.json['username']
+    uhash = request.json['uhash']
+
+    if "pbkdf2:sha256" not in uhash:
+        return jsonify({'success': False, 'message': 'Password not a hash'})
+    if check_hash(username,uhash):
+        userid = get_userid(username,uhash)
+        if not userid:
+            return jsonify({'success': False, 'message': 'Hash does not match'})
+        else:
+            return jsonify({'success': True, 'userid': userid})
+    else:
+        return jsonify({'success': False, 'message': 'Hash does not match'})
+
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=8000, debug = True)
