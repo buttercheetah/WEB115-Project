@@ -8,7 +8,7 @@ async function main() {
         return
     }
     //Hide the signup/login buttons if the user is already logged in
-    header_nav.innerHTML = "<ul></ul>";
+    header_nav.innerHTML = "<ul><li><a href='/logout'>Logout</a></li></ul>";
     
 }
 
