@@ -1,0 +1,87 @@
+body {
+    background-color: #f2f2f2;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  #signup-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    margin-bottom: 20px;
+  }
+  
+  #signup-form label {
+    margin-bottom: 10px;
+  }
+  
+  #signup-form input[type="text"],
+  #signup-form input[type="password"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  #signup-form button[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    align-self: flex-end;
+    margin-left: auto; /* push element to the right */
+
+  }
+
+  #cancel {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    align-self: flex-start; /* align button to the top of the container */
+    margin-right: 100px; /* push button to the left */
+  }
+  
+  #formbuttons a:link, #formbuttons a:visited {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+  }
+  
+  #cancel:hover {
+    background-color: #910707;
+  }
+  
+  #signup-form button[type="submit"]:hover {
+    background-color: #3E8E41;
+  }
+  #formbuttons {
+    display: flex; /* use flexbox to align buttons horizontally */
+    width: 100%; /* set width to 100% to take up full width of form */
+    margin-bottom: 20px; /* add some space between form and buttons */
+  }
+  
+  #formbuttons button {
+    flex: 1; /* distribute space evenly between buttons */
+    justify-content: flex-start; 
+  }

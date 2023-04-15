@@ -15,8 +15,8 @@ function getCookie(name) {
 async function checkCookieLogin() {
     let cuser = getCookie("username");
     let cphash = getCookie("phash");
-    console.log(cuser);
-    console.log(cphash);
+    //console.log(cuser);
+    //console.log(cphash);
     if (cuser != undefined && cphash != undefined) {
         const response = await fetch('/api/login', {
         method: 'POST',

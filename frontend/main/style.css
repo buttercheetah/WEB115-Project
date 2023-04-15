@@ -1,14 +1,92 @@
-.banner {
+/* Set default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Apply a background color to the body */
+  body {
+    background-color: #f2f2f2;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+  }
+  
+/* Center the main content */
+#main {
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 20px;
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+  }
+  
+  /* Style the name and location */
+  #main h2 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  #main h4 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  /* Style the section headings */
+  #main h3 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  /* Style the lists */
+  #main ul {
+    list-style: none;
+    margin-bottom: 20px;
+  }
+  
+  #main ul li {
+    margin-bottom: 5px;
+  }
+  
+  /* Style the links */
+  #main a {
+    color: #333;
+    text-decoration: none;
+  }
+  
+  #main a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Style the banner */
+  .banner {
     background-color: #333;
     color: #fff;
-    padding: 5px;
+    padding: 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-size: 14px;
+    font-size: 24px;
     font-weight: bold;
-}
-
+  }
+  
+  .banner ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .banner ul li a:hover {
+    background-color: #3E8E41;
+  }
+  
 .banner ul {
     list-style: none;
     margin: 0;
@@ -17,22 +95,28 @@
     align-items: center;
 }
 
-.banner ul li {
-    margin-right: 2px;
+/* Style the grid items */
+#Work\ Experience,
+#Education,
+#Technical\ Skills,
+#Skills,
+#Interests,
+#Personal\ Projects,
+#Languages,
+#Social\ Media {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
-
-.banner ul li:last-child {
-    margin-right: 0;
-}
-
-.banner ul li a {
-    color: #fff;
-    text-decoration: none;
-    padding: 5px 10px;
-    border-radius: 1px;
-    transition: background-color 0.3s ease;
-}
-
-.banner ul li a:hover {
-    background-color: #3E8E41;
+#Work\ Experience:hover,
+#Education:hover,
+#Technical\ Skills:hover,
+#Skills:hover,
+#Interests:hover,
+#Personal\ Projects:hover,
+#Languages:hover,
+#Social\ Media:hover {
+  background-color: #d1d1d1;
+  transform: translateY(-5px);
 }

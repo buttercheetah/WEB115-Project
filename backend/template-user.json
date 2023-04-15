@@ -5,37 +5,41 @@
     "phoneNumber": "012 345 6789",
     "Email": "doe@doe.com",
     "Location": "New York USA",
-    "Social Media": {
-        "Linkedin": "linkedin.com/johndoe",
-        "Instagram": "instagram.com/johndoe"
+    "odict": {
+        "Social Media": {
+            "Linkedin": "linkedin.com/johndoe",
+            "Instagram": "instagram.com/johndoe"
+        },
+        "Work Experience": {
+            "Google": "1y",
+            "Microsoft": "2y"
+        },
+        "Personal Projects":{
+            "Nextcloud": "A self hosted cloud alternative",
+            "another thing": "a description"
+        }
     },
-    "WorkExperience": {
-        "Google": "1y",
-        "Microsoft": "2y"
-    },
-    "Education": [
-        "Highschool",
-        "Associates in arts"
-    ],
-    "Skills": [
-        "Public Speaking",
-        "Teamwork"
-    ],
-    "TechnicalSkills": [
-        "c++",
-        "java"
-    ],
-    "Languages": [
-        "English",
-        "Spanish"
-    ],
-    "Interests": [
-        "Virtual Reality",
-        "Chess"
-    ],
-    "PersonalProjects":{
-        "Nextcloud": "A self hosted cloud alternative",
-        "item2": "Desc"
+    "olist": {
+        "Education": [
+            "Highschool",
+            "Associates in arts"
+        ],
+        "Skills": [
+            "Public Speaking",
+            "Teamwork"
+        ],
+        "Technical Skills": [
+            "c++",
+            "java"
+        ],
+        "Languages": [
+            "English",
+            "Spanish"
+        ],
+        "Interests": [
+            "Virtual Reality",
+            "Chess"
+        ]
     }
-    
+   
 }
