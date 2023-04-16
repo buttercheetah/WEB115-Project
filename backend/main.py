@@ -130,7 +130,7 @@ def getuserdata():
         f.close()
         return jsonify({'success': True, 'data': userdata})
     else:
-        return jsonify({'success': False, 'message': 'User data does not exist'})
+        return jsonify({'success': False, 'message': 'User data does not exist. Create it in the editor!'})
 
 @app.route('/api/submituserdata', methods=['POST'])
 def submituserdata():

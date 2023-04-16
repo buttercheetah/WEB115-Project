@@ -218,7 +218,11 @@ async function submitall() {
     body: JSON.stringify({"username":cuser, "uhash":cphash, "data":data})
     });
     const result = await response.json();
-    alert(result);
+    if (result.success) {
+      location.href = '/main';
+    } else {
+      alert("Failed to submit");
+    }
 }
 
 $('submitall').addEventListener("click", submitall);

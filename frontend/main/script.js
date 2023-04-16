@@ -18,13 +18,17 @@ async function getuserdata() {
 async function main() {
     const result = await checkCookieLogin();
     if (result == false) {
-        message.innerHTML = '<p>Not logged in!</p><p>please log in.</p>';
-        return
+        maindata.innerHTML = '<p>Not logged in!</p><p>Please log in.</p>';
+        return;
     }
     //Hide the signup/login buttons if the user is already logged in and instead display the logout button
     header_nav.innerHTML = "<ul><li><a href='/logout'>Logout</a></li><li><a href='/edit'>Edit</a></li></ul>";
     const udata = await getuserdata();
 
+    if (udata.success == false) {
+        maindata.innerHTML = "<p>Notice</p><p>"+udata.message+"</p>";
+        return;
+    }
     htmltopush = "";
 
     htmltopush += "<h2>"+udata.data.firstName+" "+udata.data.LastName+"</h3>";
