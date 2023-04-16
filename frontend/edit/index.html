@@ -6,8 +6,46 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="input-box">
+      <header class="banner">
+        <h1>Resume Editor</h1>
+        <nav id="header_nav">
+          <ul>
+            <li id="ignupm"><a href="/signup">Sign Up</a></li>
+            <li id="loginm"><a href="/login">Log In</a></li>
+          </ul>
+        </nav>
+      </header>
       <div class="grid-container">
+        <div class="categories individual" >
+          <form>
+            <div class="input-box">
+              <label for="fName">First Name</label> 
+              <input type="text" id="fName" placeholder="Enter Your First Name" />
+            </div>
+            <div class="input-box">
+              <label for="lname">Last Name</label> 
+              <input type="text" id="lName" placeholder="Enter Your Last Name" />
+            </div>
+            <div class="input-box">
+              <label for="pn">Phone Number</label> 
+              <input type="text" id="pn" placeholder="Enter Your Phone Number" />
+            </div>
+          </form>
+        </div>
+  
+        <div class="categories individual">
+          <form>
+            <div class="input-box">
+              <label for="email">Email</label> 
+              <input type="text" id="email" placeholder="Enter Your Email" />
+            </div>
+            <div class="input-box">
+              <label for="location">Location</label> 
+              <input type="text" id="location" placeholder="Enter Your Location" />
+            </div>
+          </form>
+        </div>
+
         <div id="Education" class="categories">
           <h1>Education</h1>
           <form onsubmit="addToList(1); return false;">

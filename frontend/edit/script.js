@@ -2,6 +2,10 @@ let lists = [[], [], [], [], []];
 // I did use chatGPT to assist me with this.
 let dictionaries = [{}, {}, {}];
 
+var $ = function (id) {
+  return document.getElementById(id);
+}
+
 function addToList(listIndex, isDictionary=false) {
   let input = document.getElementById(`input${listIndex}`).value;
   if (input !== "") {
@@ -22,6 +26,20 @@ function addToList(listIndex, isDictionary=false) {
     if (isDictionary) {
       document.getElementById(`key${listIndex}`).value = "";
     }
+  }
+}
+
+function adddirecttolist(listIndex, value, key="", isDictionary=false) {
+  if (isDictionary) {
+    if (key === "") {
+      alert("Please enter a key for the dictionary item.");
+      return;
+    }
+    dictionaries[(listIndex-5) - 1][key] = value;
+    displayDict(listIndex);
+  } else {
+    lists[listIndex - 1].push(value);
+    displayList(listIndex);
   }
 }
 
@@ -110,3 +128,66 @@ displayList(2);
 displayList(3);
 displayList(4);
 displayList(5);
+
+
+// Education - 1
+// Skills - 2
+// Technical Skill - 3
+// Language - 4
+// Intrests - 5
+// Work Experience - 6
+// Personal Projects - 7
+// Social Media - 8
+
+const header_nav = document.querySelector('#header_nav');
+
+async function getuserdata() {
+    let cuser = getCookie("username");
+    let cphash = getCookie("phash");
+    const response = await fetch('/api/getuserdata', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({"username":cuser, "uhash":cphash})
+    });
+    const result = await response.json();
+    return result;
+}
+
+async function main() {
+    const result = await checkCookieLogin();
+    if (result == false) {
+        alert("Not authenticated");
+        return
+    }
+    //Hide the signup/login buttons if the user is already logged in and instead display the logout button
+    header_nav.innerHTML = "<ul><li><a href='/logout'>Logout</a></li><li><a href='/main'>Back</a></li></ul>";
+    const udata = await getuserdata();
+
+
+    $('fName').value = udata.data.firstName;
+    $('lName').value = udata.data.LastName;
+    $('pn').value = udata.data.phoneNumber;
+    $('email').value = udata.data.Email;
+    $('location').value = udata.data.Location;
+
+
+    const order = {"Work Experience":6, "Education":1, "Technical Skills":3, "Skills":2, "Interests":5, "Personal Projects":7, "Languages":4, "Social Media":8};
+    for (let item in order) {
+        if (item in udata.data.odict) {
+            let ndata = udata.data.odict[item];
+            for (let x in ndata) {
+              adddirecttolist(order[item], ndata[x], x, true);
+            }
+        } else if (item in udata.data.olist) {
+            let ndata = udata.data.olist[item];
+            for (let x in ndata) {
+              adddirecttolist(order[item], ndata[x]);
+            }
+        } else {
+            console.warn(item+" is not found in udata");
+        }
+    }
+}
+main();
