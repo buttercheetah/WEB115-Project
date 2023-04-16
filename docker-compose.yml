@@ -1,0 +1,14 @@
+version: "3.7"
+
+services:
+  pythonbackend:
+    build: ./backend
+    restart: always
+    ports:
+      - 2001:5000
+  httpdfronted:
+    ports:
+        - '2000:80'
+    volumes:
+        - './frontend:/usr/local/apache2/htdocs/'
+    image: 'httpd:2.4'

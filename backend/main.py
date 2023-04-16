@@ -6,6 +6,11 @@ import sqlite3
 import os
 import json
 
+if not os.path.exists("instance"):
+    os.mkdir("instance")
+if not os.path.exists("instance/userdata"):
+    os.mkdir("instance/userdata")
+
 # create a connection to the SQLite database
 def opendb():
     conn = sqlite3.connect('instance/users.db')
