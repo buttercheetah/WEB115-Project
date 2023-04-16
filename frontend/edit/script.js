@@ -190,4 +190,36 @@ async function main() {
         }
     }
 }
+
+async function submitall() {
+  data = {};
+  data.firstName = $('fName').value;
+  data.LastName = $('lName').value;
+  data.phoneNumber=  $('pn').value;
+  data.Email =  $('email').value;
+  data.Location = $('location').value;
+  data.odict = {};
+  data.odict["Personal Projects"] = dictionaries[7-5-1];
+  data.odict["Work Experience"] = dictionaries[6-5-1];
+  data.odict["Social Media"] = dictionaries[8-5-1];
+  data.olist = {};
+  data.olist["Education"] = lists[1-1];
+  data.olist["Skills"] = lists[2-1];
+  data.olist["Technical Skills"] = lists[3-1];
+  data.olist["Languages"] = lists[4-1];
+  data.olist["Interests"] = lists[5-1];
+  let cuser = getCookie("username");
+  let cphash = getCookie("phash");
+  const response = await fetch('/api/submituserdata', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({"username":cuser, "uhash":cphash, "data":data})
+    });
+    const result = await response.json();
+    alert(result);
+}
+
+$('submitall').addEventListener("click", submitall);
 main();

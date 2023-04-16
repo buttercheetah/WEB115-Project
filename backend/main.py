@@ -132,6 +132,24 @@ def getuserdata():
     else:
         return jsonify({'success': False, 'message': 'User data does not exist'})
 
+@app.route('/api/submituserdata', methods=['POST'])
+def submituserdata():
+    username = request.json['username']
+    uhash = request.json['uhash']
+    if "pbkdf2:sha256" not in uhash:
+        return jsonify({'success': False, 'message': 'Password not a hash'})
+    if not check_hash(username,uhash):
+        return jsonify({'success': False, 'message': 'Hash does not match'})
+
+    userid = get_userid(username,uhash)
+    if not userid:
+        return jsonify({'success': False, 'message': 'Hash does not match'})
+    
+    userdatapath = f"instance/userdata/{userid}.json"
+    with open(userdatapath, 'w') as f:
+        json.dump(request.json["data"], f)
+
+    return jsonify({'success': True})
 @app.route('/api/dev/getuserid', methods=['POST'])
 def devgetuserid():
     username = request.json['username']

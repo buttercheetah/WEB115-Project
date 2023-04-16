@@ -22,13 +22,13 @@ async function main() {
         return
     }
     //Hide the signup/login buttons if the user is already logged in and instead display the logout button
-    header_nav.innerHTML = "<ul><li><a href='/logout'>Logout</a></li></ul>";
+    header_nav.innerHTML = "<ul><li><a href='/logout'>Logout</a></li><li><a href='/edit'>Edit</a></li></ul>";
     const udata = await getuserdata();
 
     htmltopush = "";
 
     htmltopush += "<h2>"+udata.data.firstName+" "+udata.data.LastName+"</h3>";
-    htmltopush += "<h4>"+udata.data.Location+"</h4>";
+    htmltopush += "<h4>"+udata.data.Location+"<br>"+udata.data.phoneNumber+"</h4>";
 
 
     const order = ["Work Experience", "Education", "Technical Skills", "Skills", "Interests", "Personal Projects", "Languages", "Social Media"];
