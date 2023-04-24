@@ -96,7 +96,10 @@
           <h1>Work Experience</h1>
           <form onsubmit="addToList(6, true); return false;">
             <input type="text" placeholder="Job" id="key6" />
-            <input type="text" placeholder="Length (ie 2y) or description" id="input6" />
+            <label for="input6a">Start Date</label>
+            <input type="date" id="input6a" />
+            <label for="input6b">End Date</label>
+            <input type="date" id="input6b" />
             <button type="button" onclick="addToList(6, true)">Add</button>
           </form>
           <ul id="dict6"></ul>

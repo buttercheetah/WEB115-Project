@@ -7,6 +7,22 @@ var $ = function (id) {
 }
 
 function addToList(listIndex, isDictionary=false) {
+  if (listIndex == 6) { // Specifically for WorkExperience
+    let inputa = new Date(document.getElementById(`input${listIndex}a`).value);
+    let inputb = new Date(document.getElementById(`input${listIndex}b`).value);
+    let years = new Date(inputb-inputa).getFullYear() - 1970; 
+    let months = (inputb.getMonth() - inputa.getMonth() + (12 * (inputb.getFullYear() - inputa.getFullYear())))-(years*12)
+    let final = `${years} years`;
+    if (months > 0) {final += `,${months} months`;}
+    let key = document.getElementById(`key${listIndex}`).value;
+    if (key === "") {
+      alert("Please enter a key for the dictionary item.");
+      return;
+    }
+    dictionaries[(listIndex-5) - 1][key] = final;
+    displayDict(listIndex);
+    return;
+  }
   let input = document.getElementById(`input${listIndex}`).value;
   if (input !== "") {
     if (isDictionary) {
@@ -17,6 +33,7 @@ function addToList(listIndex, isDictionary=false) {
       }
       dictionaries[(listIndex-5) - 1][key] = input;
       displayDict(listIndex);
+
     } else {
       lists[listIndex - 1].push(input);
       displayList(listIndex);
