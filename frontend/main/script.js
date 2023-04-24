@@ -31,7 +31,7 @@ async function main() {
     }
     htmltopush = "";
 
-    htmltopush += "<h2>"+udata.data.firstName+" "+udata.data.LastName+"</h3>";
+    htmltopush += "<h2>"+udata.data.firstName+" "+udata.data.LastName+"<br>"+udata.data.Email+"</h3>";
     htmltopush += "<h4>"+udata.data.Location+"<br>"+udata.data.phoneNumber+"</h4>";
 
 
